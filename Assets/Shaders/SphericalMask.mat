@@ -31,13 +31,13 @@ Material:
         m_Scale: {x: 4, y: 4}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ColorStrength: 4
+    - _ColorStrength: 3.2
     - _EmissionColorStrength: 4
     - _Glossiness: 0.5
     - _Metallic: 0
     - _Radius: 8.9
     - _Softness: 0.5
     m_Colors:
-    - _Color: {r: 0.09558821, g: 0.09558821, b: 0.09558821, a: 1}
+    - _Color: {r: 1, g: 0, b: 0.93103456, a: 1}
     - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
     - _Position: {r: -2.13, g: -7.5, b: 22.99, a: 0}
