@@ -12,10 +12,9 @@ public class Flower_Trigger : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision other)
 	{
-		Debug.Log ("COLLISION " + other.gameObject.name);
-		if (other.gameObject.tag == "Hands") {
+		/*if (other.gameObject.tag == "Hands") {
 			RCM.RemoveColours (10);
-		}
+		}*/
 
 	}
 }

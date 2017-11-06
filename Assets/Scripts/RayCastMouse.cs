@@ -7,6 +7,7 @@ public class RayCastMouse : MonoBehaviour {
     public float _radius, _softness, _smoothSpeed, _scaleFactor;
 	// Use this for initialization
 	void Start () {
+		Flower_Interaction.Trigger_Shader += RemoveColours;
 	}
 	
 	// Update is called once per frame
@@ -31,8 +32,9 @@ public class RayCastMouse : MonoBehaviour {
         Shader.SetGlobalFloat("GLOBALmask_Softness", _softness);
     }
 
-	public void RemoveColours(float time)
+	void RemoveColours(Vector3 _pos)
 	{
+		Shader.SetGlobalVector("GLOBALmask_Position", _pos);
 		StartCoroutine("RemoveColoursInTime", 10);
 	}
 
