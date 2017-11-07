@@ -32,8 +32,9 @@ public class Grab : MonoBehaviour {
 			grabbedObject.GetComponent<Rigidbody> ().isKinematic = true;
 			grabbedObject.transform.position = transform.position;
 			grabbedObject.transform.parent = transform;
-			if (grabbedObject.GetComponentInChildren<Flower_Interaction> () != null)
+			if (grabbedObject.GetComponentInChildren<Flower_Interaction> () != null) {
 				grabbedObject.GetComponentInChildren<Flower_Interaction> ().FlowerInteraction ();
+			}
 		}
 	}
 

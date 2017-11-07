@@ -8,6 +8,7 @@ public class Flower_Interaction : MonoBehaviour {
 	public delegate void TriggerShader(Vector3 _pos);
 	public static event TriggerShader Trigger_Shader; 
 	public bool test;
+	public static bool LeanFlower;
 	void Start() {
 
 		m_Animator = GetComponent<Animator> ();
@@ -17,14 +18,14 @@ public class Flower_Interaction : MonoBehaviour {
 	{
 		Vector3 toOther = Player.transform.position - transform.position;
 		if (Vector3.Dot (transform.TransformDirection (transform.forward), toOther) < 0) {
-			Debug.Log ("Transform is behind me");
 			m_Animator.SetBool ("left", false);
 			m_Animator.SetBool ("right", true);
+			LeanFlower = false;
 		}
 		if (Vector3.Dot (transform.TransformDirection (transform.forward), toOther) > 0) {
-			Debug.Log ("Transform is in Front me");
 			m_Animator.SetBool ("right", false);
 			m_Animator.SetBool ("left", true);
+			LeanFlower = true;
 		}
 	}
 
