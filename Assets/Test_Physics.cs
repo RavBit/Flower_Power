@@ -7,7 +7,6 @@ public class Test_Physics : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		Debug.Log ("Oella");
 		GetComponent<Rigidbody>().AddForce (-transform.forward * forceAmount, ForceMode.Acceleration);
 		GetComponent<Rigidbody>().useGravity = true;
 	}
