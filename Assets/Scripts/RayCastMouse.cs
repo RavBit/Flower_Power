@@ -9,6 +9,7 @@ public class RayCastMouse : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Flower_Interaction.Trigger_Shader += RemoveColours;
+		Flower_Interaction.G_Trigger_Shader += GoGray;
 	}
 	
 	// Update is called once per frame
@@ -31,19 +32,32 @@ public class RayCastMouse : MonoBehaviour {
 		Shader.SetGlobalVector("GLOBALmask_Position", POS.transform.position);
         Shader.SetGlobalFloat("GLOBALmask_Radius", _radius);
         Shader.SetGlobalFloat("GLOBALmask_Softness", _softness);
+
     }
 
-	void RemoveColours(Vector3 _pos)
+	void RemoveColours(Vector3 _pos, float _strongness)
 	{
+		Debug.Log ("Test1");
+		_radius = 10;
+		Shader.SetGlobalFloat("GLOBALmask_Radius", _radius);
+		Shader.SetGlobalFloat("GLOBALmask_Strongness", _strongness);
 		Shader.SetGlobalVector("GLOBALmask_Position", POS.transform.position);
 		StartCoroutine("RemoveColoursInTime", 10);
+	}
+	void GoGray(Vector3 _pos, float _strongness)
+	{
+		_radius = 0;
+		Shader.SetGlobalFloat("GLOBALmask_Strongness", _strongness);
+		Shader.SetGlobalVector("GLOBALmask_Position", POS.transform.position);
 	}
 
 	IEnumerator RemoveColoursInTime(float time)
 	{
+		Debug.Log ("Test");
 		while (time > 0) {
 			Debug.Log ("Time " + time);
-			Debug.Log ("Shader: " + Shader.GetGlobalFloat ("GLOBALmask_Radius"));
+			Debug.Log ("Strongness: " + Shader.GetGlobalFloat("GLOBALmask_Strongness"));
+			//Debug.Log ("Shader: " + Shader.GetGlobalFloat ("GLOBALmask_Radius"));
 			time = time -0.05f;
 			_radius = time;
 			yield return new WaitForSeconds (0.05f);

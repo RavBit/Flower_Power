@@ -7,8 +7,10 @@ public class Flower_Interaction : MonoBehaviour {
 	public GameObject Bowl;
 	public GameObject Player;
 	public Animator m_Animator;
-	public delegate void TriggerShader(Vector3 _pos);
+	public delegate void TriggerShader(Vector3 _pos, float _strongness);
+
 	public static event TriggerShader Trigger_Shader; 
+	public static event TriggerShader G_Trigger_Shader; 
 	public bool test;
 	public static bool LeanFlower;
 	void Start() {
@@ -41,12 +43,13 @@ public class Flower_Interaction : MonoBehaviour {
 		}
 	}*/
 
-	public void FlowerInteraction()
+	public void FlowerInteraction(float _strongness)
 	{
-		if (!test) {
-			test = true;
-			Trigger_Shader (Bowl.transform.position);
-		}
+		Trigger_Shader (Bowl.transform.position, _strongness);
+	}
+	public void FlowerInteractionG(float _strongness)
+	{
+		G_Trigger_Shader (Bowl.transform.position, _strongness);
 	}
 
 }

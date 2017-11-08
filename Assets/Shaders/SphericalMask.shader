@@ -39,6 +39,8 @@
 		uniform float4 GLOBALmask_Position;
 		uniform half GLOBALmask_Radius;
 		uniform half GLOBALmask_Softness;
+		uniform half GLOBALmask_Strongness;
+		uniform fixed4 GLOBALmask_OldStrongness;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -51,7 +53,7 @@
 			//Color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 			//Grayscale
-			half grayscale = (c.r + c.g + c.b) * 0.333;
+			half grayscale = (c.r + c.g + c.b) * GLOBALmask_Strongness;
 			fixed3 c_g = fixed3(grayscale,grayscale,grayscale);
 			//Emission
 			fixed4 e = tex2D(_EmissionTex, IN.uv_EmissionTex) * _EmissionColor * _EmissionStrength;
