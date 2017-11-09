@@ -11,6 +11,10 @@ public class Effects_Manager : MonoBehaviour {
 	public GameObject ThunderFlash;
 	public GameObject SunnyLight;
 	public AudioSource WindSound;
+	public AudioSource TickingClock;
+	public AudioSource RadiatorSound;
+	public AudioSource RainTicking;
+	public AudioSource SoftBreeze;
 	void Start()
 	{
 		Rain.Play ();
@@ -34,6 +38,7 @@ public class Effects_Manager : MonoBehaviour {
 		if (Input.GetKeyDown ("1")){
 			StopSound ();
 			StopRain ();
+			SoftBreeze.Play ();
 			Sunny.Play ();
 			SunnyLight.SetActive (true);
 			Debug.Log ("Trigger sunny");
@@ -51,11 +56,15 @@ public class Effects_Manager : MonoBehaviour {
 	{
 		ThunderSound.Stop ();
 		Sunny.Stop ();
+		SoftBreeze.Stop ();
 	}
 	void StopAllSounds()
 	{
 		StopSound ();
 		StopRain ();
+		TickingClock.Stop ();
+		RadiatorSound.Stop ();
+		RainTicking.Stop ();
 	}
 	void WindSoundStart()
 	{

@@ -243,7 +243,7 @@ public class OVRPlayerController : MonoBehaviour
 		if (OVRInput.Get(OVRInput.Button.DpadUp))
 		{
 			moveForward = true;
-			dpad_move   = true;
+			dpad_move   = false;
 
 		}
 
@@ -315,13 +315,13 @@ public class OVRPlayerController : MonoBehaviour
 		moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
-		moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+		//moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
 #endif
 
-		Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+		/*Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
 
 		if(primaryAxis.y > 0.0f)
-            MoveThrottle += ort * (primaryAxis.y * transform.lossyScale.z * moveInfluence * Vector3.forward);
+            MoveThrottle += ort * (primaryAxis.y * transform.lossyScale.z  * Vector3.forward);
 
 		if(primaryAxis.y < 0.0f)
             MoveThrottle += ort * (Mathf.Abs(primaryAxis.y) * transform.lossyScale.z * moveInfluence * BackAndSideDampen * Vector3.back);
@@ -337,6 +337,7 @@ public class OVRPlayerController : MonoBehaviour
 		euler.y += secondaryAxis.x * rotateInfluence;
 
 		transform.rotation = Quaternion.Euler(euler);
+*/
 	}
 
 	/// <summary>
